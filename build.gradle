@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+group = 'me.byteful.plugin.areas'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name = 'jitpack'
+        url = 'https://jitpack.io'
+    }
+    maven {
+        name = 'redempt'
+        url = 'https://redempt.dev'
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT'
+    compileOnly 'org.jetbrains:annotations:23.0.0'
+    implementation files("/libs/dialogue-1.2.0.0.jar")
+    implementation 'com.github.Redempt:RedCommands:1.5.7'
+    implementation 'com.github.byteful:PersistentPluginData:1.0.0'
+    implementation 'com.github.nthByte-LLC:dialogue:1.2.0.0'
+}
+
+shadowJar {
+    minimize()
+    archiveBaseName.set("Areas")
+    archiveClassifier.set("")
+
+    relocate "com.nthbyte.dialogue", "me.byteful.plugin.areas.libs.dialogue"
+    relocate "redempt.redlib", "me.byteful.plugin.areas.libs.redlib"
+}
+
+def targetJavaVersion = 8
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release = targetJavaVersion
+    }
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

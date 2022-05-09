@@ -1,0 +1,7 @@
+name: Areas
+version: '${version}'
+main: me.byteful.plugin.areas.AreasPlugin
+api-version: 1.13
+authors: [ byteful ]
+description: A plugin for _patik_#4978
+commands:

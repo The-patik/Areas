@@ -1,0 +1,31 @@
+area_already_exists: &cThe provided area already exists!
+success_delete_area: &aArea has been deleted successfully.
+success_create_area: &aArea has been created successfully.
+wizard_welcome: &aWelcome to the area creation wizard.
+wizard_exit: &aTo exit, type 'exit' at any point.
+wizard_title: &eWhat title should be displayed?
+wizard_subtitle: &eWhat subtitle should be displayed?
+wizard_actionbar: &eWhat subtitle should be displayed?
+wizard_set: &eType 'set' to add corner points at where the region will be defined. Type 'done' when you have set at least more than 3 points.
+exited_creation_wizard: &cExited area creation process.
+areas_list_header: &eAreas:
+areas_list_format: &a- %name%
+not_enough_points: &cYou need at least 3 corner points to create an area!
+helpTitle: &a--[ &eHelp for %cmdname% &a]--
+helpEntry: &e%cmdname%&a: %help%
+helpTextColor: &a
+noPermission: &cYou do not have permission to run this command! (%permission%)
+mustHoldItem: &cYou must be holding an item to do this!
+playerOnly: &cThis command can only be executed as a player!
+consoleOnly: &cThis command can only be executed as console!
+invalidArgument: &cInvalid argument for %arg%: %value%
+needArgument: &cMust supply at least one argument for %arg%
+needFlagValue: &cMust supply value for flag %flag%
+wrongArgumentCount: &cIncorrect number of arguments. Expected %args% argument(s), got %count%
+invalidSubcommand: &cInvalid subcommand: %value%
+contextDefaultFromConsole: &cCannot infer default value of argument %arg% for console sender, please specify it
+contextDefaultFlagFromConsole: &cCannot infer default value of flag %flag% for console sender, please specify it
+ambiguousOptional: &cThere is at least one ambiguous optional argument, please try again with no arguments omitted
+commandError: &cAn error was encountered in running this command. Please contact an admin.
+showUsage: &cUsage: %usage%
+numberOutsideRange: &cNumber outside allowed range: %range%
